@@ -11,15 +11,19 @@ var dbName = 'heroku_app17590487';
 var server = new Server('matvienko:matvienko@ds041198.mongolab.com', 41198, {auto_reconnect: true});
 db = new Db(dbName, server, {safe: true});
 
+
 db.open(function(err, db) {
     if(!err) {
         console.log("Connected to '" + dbName + "' database");
-        db.collection(collection, {safe:true}, function(err, collection) {
-            if (err) {
-                console.log("The '" + collection + "' collection doesn't exist. Creating it with sample data...");
-                //populateDB();
-            }
+        db.authenticate('matvienko', 'matvienko', function(err, result){
+            db.collection(collection, {safe:true}, function(err, collection) {
+                if (err) {
+                    console.log("The '" + collection + "' collection doesn't exist. Creating it with sample data...");
+                    //populateDB();
+                }
+            });
         });
+
     }
 });
 
