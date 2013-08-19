@@ -904,7 +904,7 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
         $.each(data, function (key, value){
             $.ajax({
                 type: "POST",
-                url: "http://localhost:3000/tasks",
+                url: "/tasks",
                 data: value,
                 dataType: "json"
             });
@@ -915,7 +915,7 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
     this.addOneTaskToWS = function(taskObject) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:3000/tasks",
+                url: "/tasks",
                 data: taskObject,
                 dataType: "json"
             });
@@ -924,7 +924,7 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
     this.saveTasksUpdateDate = function(date){
         $.ajax({
             type: "POST",
-            url: "http://localhost:3000/updateTasksDate",
+            url: "/updateTasksDate",
             data: {date: date + ''},
             dataType: "json"
         });
@@ -933,7 +933,7 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
     this.getTasksUpdateDate = function(date){
         $.ajax({
             type: "GET",
-            url: "http://localhost:3000/updateTasksDate",
+            url: "/updateTasksDate",
             data: date,
             dataType: "json",
             success: function(data){
@@ -946,7 +946,7 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
     this.updateOneTaskToWS = function(taskObject){
         $.ajax({
             type: "PUT",
-            url: "http://localhost:3000/tasks",
+            url: "/tasks",
             data: taskObject,
             dataType: "json"
         });
@@ -955,7 +955,7 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
     this.removeAllTasksFromWS = function() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:3000/delete/tasks",
+            url: "/delete/tasks",
             dataType: "json"
         });
     };
@@ -964,7 +964,7 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
 
         $.ajax({
             type: "GET",
-            url: "http://localhost:3000/tasks",
+            url: "/tasks",
             dataType: "json",
             success: function(data){
                 console.log(data);
