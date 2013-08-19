@@ -6,9 +6,9 @@ var Server = mongo.Server,
 
 var collection = "tmTasks";
 var updateCollection = "tmTasksUpdate";
-var dbName = 'MatvienkoTaskManager';
+var dbName = 'heroku_app17590487';
 
-var server = new Server('localhost', 27017, {auto_reconnect: true});
+var server = new Server('ds041198.mongolab.com', 41198, {auto_reconnect: true});
 db = new Db(dbName, server, {safe: true});
 
 db.open(function(err, db) {
