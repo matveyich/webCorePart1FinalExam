@@ -772,7 +772,9 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
     var localStorage = localStorageName;
 
     this.loadTasks = function() {
-        tm.lastLocalDate = Date.parse(store.get('tm.tasks.update'));
+        if (store.get('tm.tasks.update')){
+            tm.lastLocalDate = Date.parse(store.get('tm.tasks.update'));
+        }
         if (offlineMode == false) {
             this.getTasksUpdateDate();
             var localToRemoteCompare = tm.lastLocalDate.compareTo(tm.lastRemoteDate);
@@ -899,15 +901,23 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
     };
 
     this.saveAllTasksToWS = function(date) {
-        this.removeAllTasksFromWS();
-        var data = tasksData;
-        $.each(data, function (key, value){
-            $.ajax({
-                type: "POST",
-                url: "/tasks",
-                data: value,
-                dataType: "json"
-            });
+
+        $.ajax({
+            type: "GET",
+            url: "/delete/tasks",
+            dataType: "json",
+            success: function(){
+                var data = tasksData;
+                $.each(data, function (key, value){
+                    $.ajax({
+                        type: "POST",
+                        url: "/tasks",
+                        data: value,
+                        dataType: "json"
+                    });
+                });
+
+            }
         });
         this.saveTasksUpdateDate(date);
     };

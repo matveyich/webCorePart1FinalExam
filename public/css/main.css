@@ -257,6 +257,10 @@ input.task-tags
     colo: black;
 }
 
+#mode {
+    margin-top: 2.2rem
+}
+
 .hidden {
     display: none;
 }

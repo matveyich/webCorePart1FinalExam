@@ -10,7 +10,7 @@ var tasksDataStub = [
     {
         id: 2,
         title: "CTI-панель",
-        dueDate: "08.4.2013",
+        dueDate: "08.04.2013",
         tags: ["In-progress"],
         taskBody: "Выслать участникам на проработку и на проработку дизайна отдельных элементов (статусы, клавиатура)",
         link: "http://google.com/?q=cti integration with avaya aura",

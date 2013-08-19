@@ -125,7 +125,19 @@ exports.deleteObject = function(req, res) {
 
 exports.removeAllObjects = function(req, res){
     db.collection(collection, function(err, collection){
-        collection.remove();
+        if (err) {
+            res.send({'error':'An error has occurred - ' + err});
+        } else {
+//            res.send('asdf');
+            collection.remove(function(err, collection){
+                if(err){
+                    res.send({'error':'An error has occurred - ' + err});
+                } else {
+                    res.send({'resp': 'all tasks deleted'});
+                }
+            });
+
+        }
     });
 }
 
