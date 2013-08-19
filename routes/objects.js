@@ -8,7 +8,7 @@ var collection = "tmTasks";
 var updateCollection = "tmTasksUpdate";
 var dbName = 'heroku_app17590487';
 
-var server = new Server('matvienko:matvienko@ds041198.mongolab.com', 41198, {auto_reconnect: true});
+var server = new Server('ds041198.mongolab.com', 41198, {auto_reconnect: true});
 db = new Db(dbName, server, {safe: true});
 
 
