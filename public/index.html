@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+		<title>taskManager matvienko</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/mediaq.css">
+        <link href="libs/jquery-ui-1.10.3.custom/css/pepper-grinder/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+        <script type="text/javascript">
+            "use strict";
+        </script>
+		<script type="text/javascript" src="libs/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="libs/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script type="text/javascript" src="libs/date.js"></script>
+        <script type="text/javascript" src="libs/store.js"></script>
+        <script type="text/javascript" src="js/tasksData.js"></script>
+        <script type="text/javascript" src="js/main_new.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(window).on('popstate', function(){
+                    tm.Util.rebuildPage();
+                });
+                tm.init();
+            });
+        </script>
+	</head>
+	<body>
+		<div id="body" class="row">	
+			<div id="left-panel" class="column">
+				<div id="mode">
+                    <header>
+                        <h1>Mode</h1>
+                    </header>
+                    <div id="mode-switcher" class="row">
+
+                    </div>
+				</div>
+                <div>
+					<header>
+		              <h1>Dates</h1>
+		            </header>
+					<div id="dates" class="row">
+						<div id="dates-today"  class="tag" dueDate="" filterType="equals">
+							<span class="tag-name">Today</span>
+							<span class="tag-counter"></span>
+						</div><div id="dates-this-week"  class="tag" dueDate="" filterType="between">
+                            <span class="tag-name">This week</span>
+                            <span class="tag-counter"></span>
+                        </div><div id="dates-next-week" class="tag" startDate="" dueDate="" filterType="between">
+							<span class="tag-name">Next week</span>
+							<span class="tag-counter"></span>
+						</div><div id="dates-last-week" class="tag" startDate="" dueDate="" filterType="between">
+							<span class="tag-name">Last week</span>
+							<span class="tag-counter"></span>
+						</div>										
+					</div>
+				</div>
+				<div>
+					<header>
+		              <h1>Tags</h1>
+		            </header>
+					<div id="tags" class="row">
+
+					</div>
+				</div>
+			</div>
+			<div id="center-panel" class="column">
+				<header>
+	              <h1 id="date" class="date">
+                      <div class="row day">Mon</div>
+                      <div class="row date">Jun 24 2013</div>
+                  </h1>
+	            </header>
+                <div id="task-map" class="row hidden"></div>
+				<div id="add-task-btn" class="task new-task" class="row">
+					<span class="task-title">Add task</span>
+				</div>	            
+				<div id="tasks" class="row">
+					<div class="task" class="row" tags="Important">
+						<span class="task-title">
+							Template task
+							<span class="due-date">24.06.2013</span>
+						</span>
+						<span class="task-body">
+							Template task body
+						</span>
+						<span class="task-fulltext">
+							n/a
+						</span>
+					</div>
+				</ul>	
+			</div>
+		</div>
+        </div>
+	</body>
+</html>
