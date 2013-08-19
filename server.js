@@ -11,6 +11,7 @@ app.configure(function () {
     app.use(express.logger('dev'));  /* 'default', 'short', 'tiny', 'dev' */
     app.use(express.bodyParser()),
     app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.join(__dirname, '')));
 });
 
 app.all('/', function(req, res, next) {
