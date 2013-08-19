@@ -11,7 +11,6 @@ app.configure(function () {
     app.use(express.logger('dev'));  /* 'default', 'short', 'tiny', 'dev' */
     app.use(express.bodyParser()),
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use(express.static(path.join(__dirname, '')));
 });
 
 app.all('/', function(req, res, next) {
@@ -21,7 +20,8 @@ app.all('/', function(req, res, next) {
 });
 
 app.get('/', task.serveIndexHtml);
-app.get('/tasks', task.findAll);
+//app.get('/tasks', task.findAll);
+app.get('/tasks', task.serveIndexHtml);
 app.get('/tasks/:id', task.findById);
 app.post('/tasks', task.addObject);
 app.put('/tasks/:id', task.updateObject);
