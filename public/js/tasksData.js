@@ -43,6 +43,6 @@ var tasksDataStub = [
     }
 ];
 
-tm.Util.setDemoData = function(){
+function setDemoData(){
     store.set('tm.tasks', tasksDataStub);
 }
