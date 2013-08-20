@@ -43,6 +43,6 @@ var tasksDataStub = [
     }
 ];
 
-if (store.get('tm.tasks') == undefined) {
+tm.Util.setDemoData = function(){
     store.set('tm.tasks', tasksDataStub);
 }

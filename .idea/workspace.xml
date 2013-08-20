@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="94ba2b7f-ce68-47ca-abdf-8aa5c001165e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/main_new.js" afterPath="$PROJECT_DIR$/public/js/main_new.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/tasksData.js" afterPath="$PROJECT_DIR$/public/js/tasksData.js" />
     </list>
     <ignored path="pacific-hamlet-9618.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="94ba2b7f-ce68-47ca-abdf-8aa5c001165e" time="1376997443539" ignored="false" />
+    <file path="/tasksData.js" changelist="94ba2b7f-ce68-47ca-abdf-8aa5c001165e" time="1376998321226" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,10 +28,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main_new.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main_new.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/main_new.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="48" selection-start="471" selection-end="471" vertical-scroll-proportion="0.12708019">
+            <state line="388" column="10" selection-start="13417" selection-end="13417" vertical-scroll-proportion="-10.84">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tasksData.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/tasksData.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="47" column="1" selection-start="1602" selection-end="1602" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -53,6 +73,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/public/js/tasksData.js" />
         <option value="$PROJECT_DIR$/public/js/main_new.js" />
       </list>
     </option>
@@ -152,7 +173,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="StructureViewFactory">
-    <option name="ACTIVE_ACTIONS" value="SHOW_INHERITED" />
+    <option name="ACTIVE_ACTIONS" value="SHOW_INHERITED,ALPHA_COMPARATOR" />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -245,9 +266,23 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/public/js/tasksData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="1" selection-start="1602" selection-end="1602" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/main_new.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="48" selection-start="471" selection-end="471" vertical-scroll-proportion="0.12708019">
+        <state line="388" column="10" selection-start="13417" selection-end="13417" vertical-scroll-proportion="-10.84">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

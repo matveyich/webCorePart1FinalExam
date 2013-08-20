@@ -386,7 +386,7 @@ tm.Util = {
     renderModeSwitcher: function (){
         var switcher = $('#mode-switcher');
 
-        switcher.addClass('offline-mode');
+        //switcher.addClass('offline-mode');
 
         var offlineMode = $('<div></div>');
         offlineMode.addClass('offline');
