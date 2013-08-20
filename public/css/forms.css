@@ -46,10 +46,52 @@
     padding: 0.1rem;
     float: left;
     font-weight: normal;
+    text-align: center;
 }
 
 .form-save-new-task-button:hover,
 .form-cancel-new-task-button:hover {
+    background-color: rgb(33, 132, 240);
+    color: white;
+}
+.edit-task-block {
+    display: inline-block;
+    width: 100%
+}
+
+.delete-task-button,
+.cancel-task-button,
+.save-task-button,
+.edit-task-button {
+    font-size: 1.1rem;
+    display: inline;
+    margin-left: 0.2rem;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    padding: 0.1rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    float: right;
+    font-weight: normal;
+    text-align: center;
+}
+.delete-task-button,
+.cancel-task-button
+ {
+    background-color: #dedede;
+    color: #777777;
+}
+.save-task-button,
+.edit-task-button {
+    background-color: rgb(240, 124, 33);
+    color: white;
+}
+
+
+.delete-task-button:hover,
+.save-task-button:hover,
+.cancel-task-button:hover,
+.edit-task-button:hover {
     background-color: rgb(33, 132, 240);
     color: white;
 }

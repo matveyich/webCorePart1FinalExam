@@ -32,6 +32,32 @@ tm.init = function(){
         $(this).find('.online').toggleClass('hidden');
         tm.Util.rebuildPage();
     });
+    $('#tag-group').on('click', function(){
+        $('#mode-switcher').addClass('minimized');
+        $('#tags').toggleClass('minimized');
+        $('#dates').addClass('minimized');
+
+    });
+    $('#mode').on('click', function(){
+        $('#mode-switcher').toggleClass('minimized');
+        $('#tags').addClass('minimized');
+        $('#dates').addClass('minimized');
+
+    });
+    $('#date-group').on('click', function(){
+        $('#mode-switcher').addClass('minimized');
+        $('#tags').addClass('minimized');
+        $('#dates').toggleClass('minimized');
+
+    });
+    $('#date').on('click', function(){
+        $('#mode-switcher').addClass('minimized');
+        $('#tags').addClass('minimized');
+        $('#dates').addClass('minimized');
+        $('#add-task-btn').toggleClass('minimized');
+        $('#tasks').toggleClass('minimized');
+    });
+
 }
 
 tm.Util = {
@@ -265,7 +291,7 @@ tm.Util = {
         task.find('.cancel-task-button').removeClass('hidden');
         task.find('.delete-task-button').removeClass('hidden');
 
-        taskDueDate.find( "[name=task-due-date]" ).datepicker({
+        $('.task-form').find( "[name=task-due-date]" ).datepicker({
             inline: true,
             dateFormat: 'mm.dd.yy'
         });

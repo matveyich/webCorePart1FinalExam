@@ -128,7 +128,7 @@ header a.next {
 	display: block;
 }
 
-    .task hidden {
+    .task .hidden {
         display: none;
     }
 
@@ -160,33 +160,6 @@ header a.next {
 	font-weight: normal;
 	float: right;
 	font-size: 0.8rem;
-}
-
-.edit-task-block {
-    display: inline-block;
-    width: 100%
-}
-.delete-task-button,
-.save-task-button,
-.cancel-task-button,
-.edit-task-button {
-    display: inline;
-    margin-left: 0.2rem;
-    cursor: pointer;
-    border-radius: 0.3rem;
-    background-color: rgb(240, 124, 33);
-    color: white;
-    padding: 0.1rem;
-    float: right;
-    font-weight: normal;
-}
-
-.delete-task-button:hover,
-.save-task-button:hover,
-.cancel-task-button:hover,
-.edit-task-button:hover {
-    background-color: rgb(33, 132, 240);
-    color: white;
 }
 
 .task-fulltext {
@@ -231,10 +204,6 @@ header a.next {
 #mode-switcher .offline:hover,
 #mode-switcher .online:hover{
     colo: black;
-}
-
-#mode {
-    margin-top: 2.2rem
 }
 
 .hidden {
