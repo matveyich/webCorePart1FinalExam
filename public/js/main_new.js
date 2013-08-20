@@ -24,6 +24,7 @@ tm.init = function(){
     $('#add-task-form').find('.form-cancel-new-task-button').on('click', function(e){
         e.stopPropagation();
         tm.Util.clearTaskForm($('#add-task-form'));
+        $('#tasks').toggleClass('adding-new-task-mode');
     });
     $('#mode-switcher').on('click', function(e){
         $(this).toggleClass('offline-mode');
@@ -114,6 +115,7 @@ tm.Util = {
         var taskid = delBtn.attr('taskId');
         tm.curTasksObject.deleteTask(taskid);
         $(taskDOMel).remove();
+        $('#tasks').children('.task').toggleClass('editing-another-task-mode');
     },
 
     addTaskBtnClick: function(addBtn){
@@ -138,8 +140,8 @@ tm.Util = {
 
     clearTaskForm: function(form) {
         form.find('[name=task-title]').val('');
-        form.find('[name=task-due-date]').val('');
-        form.find('[name=task-tags]').val('');
+        form.find('[name=task-due-date]').val(tm.Util.getNormalDate(new Date));
+
         form.find('[name=task-body]').val('');
         form.toggleClass('hidden');
     },
@@ -196,6 +198,22 @@ tm.Util = {
         return formBlock;
     },
 
+    renderTagSelect: function(currentTag){
+        var tagSelDOMel = $('<select></select>');
+        tagSelDOMel.addClass('form-task-tags');
+        tagSelDOMel.attr('name','task-tags');
+        var option = '';
+        $.each(tm.Util.tagsData, function(key, value){
+            option = $('<option></option>');
+            option.html(value.name);
+            if (value.name == currentTag){
+                option.attr('selected', true);
+            }
+            tagSelDOMel.append(option);
+        });
+        return tagSelDOMel;
+    },
+
     setEditTaskMode: function (taskDOMElement) {
         $.each($('.editing'), function(key, value){
             tm.Util.cancelTaskEdit($(value));
@@ -213,7 +231,7 @@ tm.Util = {
         var taskDueDate = task.find('.task-title .due-date');
         taskDueDate.addClass('hidden');
 
-
+        var tagSelect = tm.Util.renderTagSelect(taskTags.html());
 
         taskBody.html(
                 '<div class="task-form">' +
@@ -233,17 +251,14 @@ tm.Util = {
                         '</textarea>' +
                     '</div>' +
 
-                    '<div class="row">' +
+                    '<div class="row tagSelect">' +
                         '<div class="form-label">Tag</div>' +
-                        '<select class="form-task-tags" name=task-tags>' +
-                        '<option>Important</option>' +
-                        '<option>In-progress</option>' +
-                        '<option>Finished</option>' +
-                        '<option>Not-started</option>' +
-                        '</select>' +
+
                     '</div>' +
                 '</div>'
         );
+
+        $('.task-form').find('.tagSelect').find('.form-label').after(tagSelect);
 
         task.find('.edit-task-button').addClass('hidden');
         task.find('.save-task-button').removeClass('hidden');
