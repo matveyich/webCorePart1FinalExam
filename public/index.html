@@ -19,7 +19,12 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $.ajaxSetup({
-                    timeout: 1000
+                    timeout: 1000,
+                    error: function() {
+                        $('#mode-switcher').addClass('offline-mode');
+                        $('#mode-switcher').find('online').addClass('hidden');
+                        $('#mode-switcher').find('offline').removeClass('hidden');
+                    }
                 });
                 $(window).on('popstate', function(){
                     tm.Util.rebuildPage();
