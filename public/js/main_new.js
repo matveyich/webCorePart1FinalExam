@@ -27,6 +27,7 @@ tm.init = function(){
         $('#tasks').toggleClass('adding-new-task-mode');
     });
     $('#mode-switcher').on('click', function(e){
+        e.stopPropagation();
         $(this).toggleClass('offline-mode');
         $(this).find('.offline').toggleClass('hidden');
         $(this).find('.online').toggleClass('hidden');
@@ -390,12 +391,12 @@ tm.Util = {
 
         var offlineMode = $('<div></div>');
         offlineMode.addClass('offline');
+        offlineMode.addClass('hidden');
         offlineMode.html('Offline');
         offlineMode.addClass('tag');
 
         var onlineMode = $('<div></div>');
         onlineMode.addClass('online');
-        onlineMode.addClass('hidden');
         onlineMode.addClass('tag');
         onlineMode.html('Online');
 
