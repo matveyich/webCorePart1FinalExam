@@ -1013,6 +1013,7 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
         $.ajax({
             type: "GET",
             url: "/updateTasksDate",
+            async: false,
             data: date,
             dataType: "json",
             success: function(data){
