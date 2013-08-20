@@ -851,7 +851,9 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
                 tasksData = this.getTasksFromLocalStorage();
                 this.saveTasks();
             } else if (localToRemoteCompare < 0){
-                tasksData = this.getTasksFromWS();
+                this.getTasksFromWS(function(data) {
+                    tasksData = data;
+                });
                 this.saveTasks();
             } else tasksData = this.getTasksFromLocalStorage();
 
@@ -1040,16 +1042,17 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
         });
     };
 
-    this.getTasksFromWS = function() {
+    this.getTasksFromWS = function(callback) {
 
         $.ajax({
             type: "GET",
             url: "/tasks",
             dataType: "json",
+            async: false,
             success: function(data){
-                console.log(data);
+                callback(data);
             }
         });
-        return tasks.responseJSON;
+
     };
 }
