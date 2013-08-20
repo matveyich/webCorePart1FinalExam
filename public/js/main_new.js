@@ -161,6 +161,7 @@ tm.Util = {
             link: ''
         };
         tm.Util.clearTaskForm(newTaskForm);
+        $('#tasks').toggleClass('adding-new-task-mode');
         tasksObject.addTask(taskObject);
         tm.Util.rebuildPage();
     },
