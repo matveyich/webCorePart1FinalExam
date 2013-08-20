@@ -17,14 +17,13 @@ tm.init = function(){
         e.stopPropagation();
         tm.Util.addTaskBtnClick($(this));
     });
-    $('#add-task-form').find('.save-new-task-button').on('click', function(e){
+    $('#add-task-form').find('.form-save-new-task-button').on('click', function(e){
         e.stopPropagation();
         tm.Util.saveNewTaskBtnClick($(this), tm.curTasksObject);
     });
-    $('#add-task-form').find('.cancel-new-task-button').on('click', function(e){
+    $('#add-task-form').find('.form-cancel-new-task-button').on('click', function(e){
         e.stopPropagation();
         tm.Util.clearTaskForm($('#add-task-form'));
-        $('#add-task-btn').trigger('click');
     });
     $('#mode-switcher').on('click', function(e){
         $(this).toggleClass('offline-mode');
@@ -36,6 +35,29 @@ tm.init = function(){
 
 tm.Util = {
     tasksObjectName: '',
+
+    tagsData: [
+        {
+            name: "Important",
+            counter: 0
+        },
+        {
+            name: "Finished",
+            counter: 0
+        },
+        {
+            name: "In-progress",
+            counter: 0
+        },
+        {
+            name: "Not-started",
+            counter: 0
+        },
+        {
+            name: "Done",
+            counter: 0
+        }
+    ],
 
     rebuildPage: function() {
         tm.curURLObject = new tm.TasksURL();
@@ -129,45 +151,47 @@ tm.Util = {
         formBlock.attr('id', 'add-task-form')
 
         var title = $('<input>');
-        title.addClass('task-title');
+        title.addClass('form-task-title');
         title.attr('name', 'task-title');
         title.attr('type', 'text');
 
         var dueDate = $('<input>');
-        dueDate.addClass('task-due-date');
+        dueDate.addClass('form-task-due-date');
         dueDate.attr('name', 'task-due-date');
         dueDate.attr('type', 'text');
         dueDate.datepicker({
             inline: true,
             dateFormat: 'mm.dd.yy'
         });
+        dueDate.val(tm.Util.getNormalDate(new Date));
+
         var body = $('<textarea></textarea>');
-        body.addClass('task-body');
+        body.addClass('form-task-body');
         body.attr('name' ,'task-body');
 
-        var selectTags = '<select name=task-tags>' +
-            '<option>Important</option>' +
+        var selectTags = '<select name=task-tags">' +
+            '<option selected>Important</option>' +
             '<option>In-progress</option>' +
             '<option>Finished</option>' +
             '<option>Not-started</option>' +
             '</select>';
 
         var tags = $(selectTags);
-        tags.addClass('task-tags');
+        tags.addClass('form-task-tags');
         tags.attr('name', 'task-tags');
         tags.attr('type', 'text');
 
         var saveBtn = $("<div>save</div>");
-        saveBtn.addClass("save-new-task-button");
+        saveBtn.addClass("form-save-new-task-button");
 
         var cancelBtn = $("<div>cancel</div>");
-        cancelBtn.addClass("cancel-new-task-button");
+        cancelBtn.addClass("form-cancel-new-task-button");
 
-        formBlock.append($('<div class="new-task-title row">Title: </div>').append(title));
-        formBlock.append($('<div class="new-task-due-date row">Due date: </div>').append(dueDate));
-        formBlock.append($('<div class="new-task-body row">Task: </div>').append(body));
-        formBlock.append($('<div class="new-task-tags row">Tags: </div>').append(tags));
-        formBlock.append($($('<div class="new-task-buttons row"></div>').append(saveBtn)).append(cancelBtn));
+        formBlock.append($('<div class="form-new-task-title row"><div class="form-label">Title</div></div>').append(title));
+        formBlock.append($('<div class="form-new-task-due-date row"><div class="form-label">Due date</div></div>').append(dueDate));
+        formBlock.append($('<div class="form-new-task-body row"><div class="form-label">Task</div></div>').append(body));
+        formBlock.append($('<div class="form-new-task-tags row"><div class="form-label">Tags</div></div>').append(tags));
+        formBlock.append($($('<div class="form-new-task-buttons row"></div>').append(saveBtn)).append(cancelBtn));
 
         return formBlock;
     },
@@ -182,26 +206,44 @@ tm.Util = {
         task.siblings().addClass('editing-another-task-mode');
 
         var taskTitle = task.find('.task-title .title-text');
-        taskTitle.addClass('row');
+        taskTitle.addClass('hidden');
         var taskBody = task.find('.task-body');
-        taskBody.addClass('row');
         var taskTags = task.find('.task-tags');
-        taskTags.addClass('row');
+        taskTags.addClass('hidden');
         var taskDueDate = task.find('.task-title .due-date');
-        taskDueDate.addClass('row');
+        taskDueDate.addClass('hidden');
 
-        taskTitle.html('Title: <input type="text" value="' + taskTitle.html() + '" name="task-title" class="title-text">');
-        taskDueDate.html('Due date: <input type="text" value="' + taskDueDate.html() + '" name="task-due-date" class="title-text">');
 
-        var selectTags = 'Tag: <select name=task-tags>' +
-            '<option>Important</option>' +
-            '<option>In-progress</option>' +
-            '<option>Finished</option>' +
-            '<option>Not-started</option>' +
-            '</select>';
 
-        taskTags.html(selectTags);
-        taskBody.html('<textarea name="task-body" class="task-body">' + taskBody.html() + '</textarea>');
+        taskBody.html(
+                '<div class="task-form">' +
+                    '<div class="row">' +
+                        '<div class="form-label">Title</div>' +
+                        '<input type="text" value="' + taskTitle.html() + '" name="task-title" class="form-task-title">' +
+                    '</div>' +
+
+                    '<div class="row">' +
+                        '<div class="form-label">Due date</div>' +
+                        '<input type="text" value="' + taskDueDate.html() + '" name="task-due-date" class="form-task-due-date">' +
+                    '</div>' +
+
+                    '<div class="row">' +
+                        '<textarea name="task-body" class="form-task-body">' +
+                        taskBody.html() +
+                        '</textarea>' +
+                    '</div>' +
+
+                    '<div class="row">' +
+                        '<div class="form-label">Tag</div>' +
+                        '<select class="form-task-tags" name=task-tags>' +
+                        '<option>Important</option>' +
+                        '<option>In-progress</option>' +
+                        '<option>Finished</option>' +
+                        '<option>Not-started</option>' +
+                        '</select>' +
+                    '</div>' +
+                '</div>'
+        );
 
         task.find('.edit-task-button').addClass('hidden');
         task.find('.save-task-button').removeClass('hidden');
@@ -511,24 +553,7 @@ tm.TagsMenu = function(curURLObject) {
 
     var getTags = function(){
         //stub
-        var tagsData = [
-            {
-                name: "Important",
-                counter: 0
-            },
-            {
-                name: "Finished",
-                counter: 0
-            },
-            {
-                name: "In-progress",
-                counter: 0
-            },
-            {
-                name: "Not-started",
-                counter: 0
-            }
-        ];
+        var tagsData = tm.Util.tagsData;
         return tagsData;
     }
 
@@ -840,10 +865,10 @@ tm.Tasks = function(tasksFilterObject, localStorageName, offlineMode) {
 
             var startDate = Date.parse(tasksFilter.startDate);
             var dueDate = Date.parse(tasksFilter.dueDate);
-
+            var tempDueDate = '';
             $.each(tasksData, function(key, value){
-
-                if (Date.parse(value.dueDate).between(startDate, dueDate) == true) {
+                tempDueDate = Date.parse(value.dueDate);
+                if (tempDueDate.between(startDate, dueDate) == true) {
 
                     if (tasksFilter.applyTagsFilter) {
 

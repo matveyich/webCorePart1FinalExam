@@ -1,0 +1,55 @@
+.form-label {
+    clear: both;
+}
+
+.task-form{
+    background-color: #f2f2f2;;
+    color: black;
+    padding: 0.4rem;
+}
+.task-form input, .task-form textarea, .task-form select {
+    border: 1px solid #dedede;
+    border-radius: 0.3rem;
+}
+.form-task-title {
+    clear:both;
+    float: none;
+    width: 25rem;
+}
+
+.form-task-due-date {
+    clear:both;
+}
+
+.form-task-body {
+    clear:both;
+    height: 5rem;
+    width: 25rem;
+}
+
+.form-task-tags {
+    float: left;
+}
+
+.form-new-task-buttons {
+
+}
+
+.form-save-new-task-button,
+.form-cancel-new-task-button {
+    display: inline;
+    margin-left: 0.2rem;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    background-color: rgb(240, 124, 33);
+    color: white;
+    padding: 0.1rem;
+    float: left;
+    font-weight: normal;
+}
+
+.form-save-new-task-button:hover,
+.form-cancel-new-task-button:hover {
+    background-color: rgb(33, 132, 240);
+    color: white;
+}

@@ -75,6 +75,7 @@
     #left-panel {
         width: 15%;
         max-width: 12rem;
+        padding-right: 0.6rem;
     }
 
     #center-panel {
