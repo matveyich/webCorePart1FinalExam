@@ -18,6 +18,9 @@
         <script type="text/javascript" src="js/main_new.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
+                $.ajaxSetup({
+                    timeout: 1000
+                });
                 $(window).on('popstate', function(){
                     tm.Util.rebuildPage();
                 });
