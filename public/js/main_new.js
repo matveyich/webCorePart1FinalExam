@@ -641,7 +641,8 @@ tm.TagsMenu = function(curURLObject) {
 
     var clickTagSubscribe = function(){
         tagDOMel.on('click', function(e){
-           clickTag($(this));
+            e.stopPropagation();
+            clickTag($(this));
         });
     }
 
@@ -724,6 +725,7 @@ tm.DatesMenu = function(curURLObject) {
 
     var clickDateTagSubscribe = function() {
         dateTagDOMel.on('click', function(e){
+            e.stopPropagation();
             clickDateTag($(this));
         });
     };
